@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
 
     def create
         @comment = @article.comments.new(comment_params)
+        @article.comments.reload
         if @comment.save
             redirect_to article_path(@article)
         else
